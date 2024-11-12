@@ -21,10 +21,10 @@ export default {
 </script>
 <template>
   <div
-    class="flex flex-col items-center justify-center size-full pt-14 pb-40 sm:pt-20 sm:pb-36 grow bg-[url('./auth_bg.png')] backdrop-blur-sm bg-no-repeat bg-cover bg-center object-cover px-4 sm:px-0"
+    class="flex flex-col items-center justify-center size-full pt-14 pb-40 sm:pt-20 sm:pb-36 grow bg-[url('./auth_bg.png')] bg-no-repeat bg-cover bg-center object-cover px-4 sm:px-0"
   >
     <div
-      class="bg-white/30 backdrop-blur-md rounded-xl p-4 sm:p-8 shadow-lg w-full max-w-xl h-fit"
+      class="bg-white/30 backdrop-blur-xl rounded-xl p-4 sm:p-8 shadow-lg w-full max-w-xl h-fit"
     >
       <h2
         class="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-6 text-center"

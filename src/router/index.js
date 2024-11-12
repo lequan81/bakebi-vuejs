@@ -4,6 +4,7 @@ import {
   Home,
   Recently,
   Products,
+  ProductDetails,
   Login,
   Signup,
   ResetPassword,
@@ -34,12 +35,26 @@ const routes = [
   },
   {
     path: "/products/:category",
-    name: "Products",
-    component: Products,
-    props: true, // This will pass route.params as props to the component
-    meta: {
-      layout: DefaultLayout,
-    },
+    children: [
+      {
+        path: "", // empty path for the parent route
+        name: "Products",
+        component: Products,
+        props: true,
+        meta: {
+          layout: DefaultLayout,
+        },
+      },
+      {
+        path: ":product_id",
+        name: "ProductDetail",
+        component: ProductDetails,
+        props: true,
+        meta: {
+          layout: DefaultLayout,
+        },
+      },
+    ],
   },
   // Authenticated routes
   {

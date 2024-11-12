@@ -2,6 +2,13 @@
 import { HSCarousel } from "preline";
 export default {
   name: "Slider",
+  props: {
+    slides: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+  },
   setup() {
     setTimeout(() => {
       HSCarousel.autoInit();
@@ -14,47 +21,27 @@ export default {
   <div
     data-hs-carousel='{
     "loadingClasses": "opacity-0",
-    "isAutoHeight": true,
     "isAutoPlay": true
   }'
     class="relative size-full"
   >
-    <div
-      class="hs-carousel relative overflow-hidden size-full bg-white rounded-lg"
-    >
+    <div class="hs-carousel relative overflow-hidden size-full bg-white">
       <div
         class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0"
       >
-        <div class="hs-carousel-slide">
-          <div
-            class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900"
-          >
-            <span
-              class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white"
-              >First slide</span
+        <template v-for="(slide, index) in slides" :key="index">
+          <div class="hs-carousel-slide">
+            <div
+              class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900 bg-center object-contain object-center bg-no-repeat bg-cover"
+              :style="`background-image: url(${slide.url})`"
             >
+              <!-- <span
+                class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white"
+                >First slide</span
+              > -->
+            </div>
           </div>
-        </div>
-        <div class="hs-carousel-slide">
-          <div
-            class="flex justify-center h-full bg-gray-200 p-6 dark:bg-neutral-800"
-          >
-            <span
-              class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white"
-              >Second slide</span
-            >
-          </div>
-        </div>
-        <div class="hs-carousel-slide">
-          <div
-            class="flex justify-center h-full bg-gray-300 p-6 dark:bg-neutral-700"
-          >
-            <span
-              class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white"
-              >Third slide</span
-            >
-          </div>
-        </div>
+        </template>
       </div>
     </div>
 
@@ -103,9 +90,9 @@ export default {
       </span>
     </button> -->
 
-    <div
+    <!-- <div
       class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"
-    ></div>
+    ></div> -->
   </div>
   <!-- End Slider -->
 </template>

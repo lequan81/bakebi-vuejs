@@ -148,25 +148,25 @@ export default {
       aria-labelledby="hs-header-base-dropdown"
     >
       <div class="py-1 md:px-1 space-y-0.5">
-        <template v-for="(item, index) in dropdownItems" :key="index">
-          <router-link
-            custom
-            :to="`${href}${item.href}`"
-            v-slot="{ isExactActive, href, navigate }"
+        <router-link
+          v-for="(item, index) in dropdownItems"
+          :key="index"
+          custom
+          :to="`${href}/${item.category}`"
+          v-slot="{ isExactActive, href, navigate }"
+        >
+          <a
+            :class="`p-2 md:px-3.5 flex items-center text-sm outline-none w-fit min-w-40 sm:w-full my-1 rounded ${
+              isExactActive
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-800 hover:bg-gray-100'
+            }`"
+            :href="`${href}`"
+            @click="navigate"
           >
-            <a
-              :class="`p-2 md:px-3.5 flex items-center text-sm outline-none w-fit min-w-40 sm:w-full my-1 rounded ${
-                isExactActive
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-800 hover:bg-gray-100'
-              }`"
-              :href="`${href}${item.href}`"
-              @click="navigate"
-            >
-              {{ item.title }}
-            </a>
-          </router-link>
-        </template>
+            {{ item.name }}
+          </a>
+        </router-link>
 
         <div
           v-if="isSubmenu"
@@ -216,26 +216,26 @@ export default {
             aria-labelledby="hs-secondaru-navbar-dropdown-sub"
           >
             <div class="p-1 space-y-0.5 md:space-y-1">
-              <template v-for="(item, index) in submenuItems" :key="index">
-                <router-link
-                  exact
-                  :to="`${href}${item.href}`"
-                  v-slot="{ isExactActive, href, navigate }"
+              <router-link
+                v-for="(item, index) in submenuItems"
+                :key="index"
+                exact
+                :to="`${href}${item.href}`"
+                v-slot="{ isExactActive, href, navigate }"
+              >
+                <a
+                  :key="index"
+                  :class="`p-2 md:px-3 flex items-center text-sm outline-none w-full px-2 py-1.5 my-1 rounded ${
+                    isExactActive
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-800 hover:bg-gray-100'
+                  }`"
+                  :href="`${href}${item.href}`"
+                  @click="navigate"
                 >
-                  <a
-                    :key="index"
-                    :class="`p-2 md:px-3 flex items-center text-sm outline-none w-full px-2 py-1.5 my-1 rounded ${
-                      isExactActive
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-800 hover:bg-gray-100'
-                    }`"
-                    :href="`${href}${item.href}`"
-                    @click="navigate"
-                  >
-                    {{ item.title }}
-                  </a>
-                </router-link>
-              </template>
+                  {{ item.title }}
+                </a>
+              </router-link>
             </div>
           </div>
         </div>

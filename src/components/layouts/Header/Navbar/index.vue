@@ -1,41 +1,23 @@
-<script setup>
-import { ref } from "vue";
+<script>
 import Searchbox from "../Searchbox/index.vue";
 import BtnGroup from "../BtnGroup.vue";
 import NavbarItem from "./NavbarItem.vue";
-import {
-  HomeIcon,
-  ListBulletIcon,
-  StarIcon,
-  FireIcon,
-} from "@heroicons/vue/24/outline";
+import { DEFAULT_NAVIGATION } from "@utils/constants";
+import { HomeIcon } from "@heroicons/vue/24/outline";
 
-const defaultNavigation = ref([
-  { title: "Trang chủ", href: "/", icon: HomeIcon },
-  {
-    title: "Sản phẩm",
-    href: "/products",
-    icon: ListBulletIcon,
-    isDropdown: true,
-    dropdownItems: [
-      { title: "Bánh ngọt", href: "/sweetcake" },
-      { title: "Bánh nướng", href: "/cake" },
-    ],
+export default {
+  name: "Navbar",
+  components: {
+    Searchbox,
+    BtnGroup,
+    NavbarItem,
+    HomeIcon,
   },
-  {
-    title: "Mới nhất",
-    href: "/recently",
-    icon: StarIcon,
+  data() {
+    return {
+      DEFAULT_NAVIGATION,
+    };
   },
-  { title: "Bán chạy", href: "/top-trending", icon: FireIcon },
-]);
-
-const name = "Navbar";
-const components = {
-  Searchbox,
-  BtnGroup,
-  NavbarItem,
-  HomeIcon,
 };
 </script>
 <template>
@@ -51,7 +33,7 @@ const components = {
         <div
           class="flex flex-col size-full md:flex-row md:items-center justify-start px-2 sm:px-1 gap-y-3 md:gap-y-0 md:gap-x-2"
         >
-          <template v-for="(item, index) in defaultNavigation" :key="index">
+          <template v-for="(item, index) in DEFAULT_NAVIGATION" :key="index">
             <NavbarItem
               :title="item.title"
               :href="item.href"

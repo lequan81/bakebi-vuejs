@@ -3,13 +3,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@Components/*": ["src/components/*"],
-      "@Layouts/*": ["src/layouts/*"],
-      "@Router/*": ["src/router/*"],
-      "@Pages/*": ["src/pages/*"],
-      "@Utils/*": ["src/utils/*"],
-      "@Assets/*": ["src/assets/*"],
-      "@Store/*": ["src/store/*"]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@router/*": ["src/router/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"],
+      "@assets/*": ["src/assets/*"],
+      "@store/*": ["src/store/*"]
     }
   },
   "exclude": ["node_modules", "public"]
