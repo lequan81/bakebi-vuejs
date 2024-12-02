@@ -1,23 +1,17 @@
-<script>
+<script setup>
 import { ref } from "vue";
+import { Input } from "@components";
 import { PaperAirplaneIcon } from "@heroicons/vue/24/outline";
-import { Input, Checkbox } from "@components/index.js";
-export default {
-  name: "ResetPassword",
-  components: {
-    PaperAirplaneIcon,
-    Input,
-    Checkbox,
-  },
-  setup() {
-    const new_password = ref("");
-    const confirm_password = ref("");
 
-    return {
-      new_password,
-    };
+defineProps({
+  name: {
+    type: String,
+    default: "ResetPassword",
   },
-};
+});
+
+const new_password = ref("");
+const confirm_password = ref("");
 </script>
 <template>
   <div
@@ -54,7 +48,7 @@ export default {
 
         <button
           type="submit"
-          class="w-full py-2 px-4 text-sm sm:text-base bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition duration-200 flex items-center justify-center gap-x-2"
+          class="w-full py-2 px-4 text-sm sm:text-base shadow-sm bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors duration-300 ease-in-out flex items-center justify-center gap-x-2"
         >
           <PaperAirplaneIcon
             class="shrink-0 size-4 sm:size-5"

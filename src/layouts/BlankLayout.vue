@@ -1,7 +1,10 @@
-<script>
-export default {
-  name: "BlankLayout",
-};
+<script setup>
+defineProps({
+  name: {
+    type: String,
+    default: "BlankLayout",
+  },
+});
 </script>
 
 <template>

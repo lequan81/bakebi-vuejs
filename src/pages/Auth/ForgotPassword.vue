@@ -1,22 +1,16 @@
-<script>
+<script setup>
 import { ref } from "vue";
+import { Input } from "@components";
 import { ArrowRightIcon } from "@heroicons/vue/24/outline";
-import { Input, Checkbox } from "@components/index.js";
-export default {
-  name: "ForgotPassword",
-  components: {
-    ArrowRightIcon,
-    Input,
-    Checkbox,
-  },
-  setup() {
-    const email = ref("");
 
-    return {
-      email,
-    };
+defineProps({
+  name: {
+    type: String,
+    default: "ForgotPassword",
   },
-};
+});
+
+const email = ref("");
 </script>
 <template>
   <div
@@ -33,7 +27,7 @@ export default {
           <span>Bạn nhớ lại mật khẩu? </span>
           <router-link :to="{ name: 'Login' }">
             <span
-              class="font-semibold transition duration-200 hover:underline underline-offset-2 hover:text-black"
+              class="font-semibold transition-colors duration-300 ease-in-out hover:underline underline-offset-2 hover:text-black"
             >
               Đăng nhập ngay!
             </span>
@@ -54,7 +48,7 @@ export default {
 
         <button
           type="submit"
-          class="w-full text-sm sm:text-base p-2 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition duration-200 flex flex-row items-center justify-center gap-x-2"
+          class="w-full text-sm sm:text-base shadow-sm p-2 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors duration-300 ease-in-out flex flex-row items-center justify-center gap-x-2"
         >
           <ArrowRightIcon
             class="shrink-0 size-4 sm:size-5"

@@ -227,25 +227,50 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@preline/carousel@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@preline/carousel/-/carousel-2.5.0.tgz#6285e9257b3f181e69477b05a55a4d137f38499a"
-  integrity sha512-sRsoS8A6binMAxgB22sKUeSNCvWkXADGA8Qpb/qRSWna6c2ILT5QTLxyqbnoUBxYRR4e6DuUJc0hQ0LtF3pi+Q==
+"@preline/accordion@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/accordion/-/accordion-2.6.0.tgz#59c15a89f01bb9bc09e877539313820c76ac060f"
+  integrity sha512-MWZrV1RC0urfG9KuaKTd316gXK8yc8vIq3XtABCVbEf43hNRYUqLFbRPD3JTbdHtYiD/xT53NZkFC0CIvGj1yg==
 
-"@preline/combobox@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@preline/combobox/-/combobox-2.5.0.tgz#617c61789f49ba805833a491a0ecd3841ad02181"
-  integrity sha512-fioCzs49O5omGXuxRK076YCrjQ6eYtM25WmQc5TEjfpdcYOWFfGinby+6/BLI3+xMljf4MlipnwxFpe7HY34wQ==
+"@preline/carousel@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/carousel/-/carousel-2.6.0.tgz#991f1f984a5f9bc0e7c05f79a20fa12c428a2355"
+  integrity sha512-WahfsSDjrqRHb7uu3k0xjBVWbFRKzxMCJL020Y2LZ4agFlKqhp1WBmOPBYBlteY/937/wXNh78ABUi6Jnn1Ccw==
 
-"@preline/dropdown@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@preline/dropdown/-/dropdown-2.5.0.tgz#ca4849f24f1d40433e479713284cfbdb1ea168ca"
-  integrity sha512-ydKGBx02eLWzmCn8gkaaTe/gXXqvkZKZCgCYCWETRdy31qhaam43hvJMcpsGOROWSjlPNBgVyGrwYdAgJUO68g==
+"@preline/combobox@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/combobox/-/combobox-2.6.0.tgz#13bb18b79963601e90bca6282aa6be88d5436d96"
+  integrity sha512-5VAy3HSu2rcYClVks/WGYYPwVlv63rjEhACHOABvVzJcej5ih83hXd71Y5a+kym65VGB/cAEDJA7KPDdNgHRQA==
 
-"@preline/overlay@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@preline/overlay/-/overlay-2.5.0.tgz#33db1add387273f07e950be19bfc55da9aca396e"
-  integrity sha512-5eWzP2N3sTOKhgoefXdrrxUNQh8F678von6ehN1cD79ujVfShYdWowvjtzMlUiTePbF0pgM/wG6D6mRzicOMzw==
+"@preline/dropdown@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/dropdown/-/dropdown-2.6.0.tgz#672d6f59a43e8acb28617b3ed99e18bae34dc908"
+  integrity sha512-Ryjeo0tOnsxzT9dI1S4gybUwTcvQPszVTqxmxry1yxIaKWzpom2As/AFoYETZ/8EbdQxr7G6CQj4d0Fw+9u+mA==
+
+"@preline/input-number@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/input-number/-/input-number-2.6.0.tgz#849f6e25fe0bdf4fcfa1d695e2ad802271ea6b06"
+  integrity sha512-hL/GFy2K2x2PPXKTt22+4O7eIet4kR+41tLAOg+ejBpgAr+Dp9MsaDJDvZVlcBHLhv2iulHfVYQeIyzrTHDgww==
+
+"@preline/overlay@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/overlay/-/overlay-2.6.0.tgz#112db2981d09ad3e96b204a96851b163a2dc931d"
+  integrity sha512-UHwvQ/urc9JXkepINlFUXYYZg6Z4FMKyN2YO/2Kn7mCbpY+QbXtoRBvq+8j9aC2MFOvV6HQhm1yLbCibt1qwFA==
+
+"@preline/select@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/select/-/select-2.6.0.tgz#5a0876aaada7f3d91db3cce1e1f902864a7a2ddb"
+  integrity sha512-plQ2DDmMx8qr6TaObutbbC9H+Pf3HxJe0jV8vcOiFXch+ze+sCuZV2UmQLno2frSaBzqoNDOdO2W1ywpAzPJfA==
+
+"@preline/tabs@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/tabs/-/tabs-2.6.0.tgz#7249864c42524652a19475730ffae4c87a243133"
+  integrity sha512-7zL1TAwRHjYyhMAX7HrJ56Xa8wgTnWBXl+5PsGKJsAeHrv09k5DbRKLYvAMbAROXg/ZRz8Z5Dko96/AUhuNecg==
+
+"@preline/tooltip@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@preline/tooltip/-/tooltip-2.6.0.tgz#a9d9f8c1d8325a6c1c8726325a9bd9dcefbae0ea"
+  integrity sha512-wlUmzO7Xm+1ay9qCNW17Yxgmc2i2Bc4J6ZxpTh4CCdsxPFFGhJrGJHFDeKyAoAe19nEb3ps9Zi+/vb1ULxYEaA==
 
 "@rollup/rollup-android-arm-eabi@4.24.3":
   version "4.24.3"
@@ -389,7 +414,7 @@
     "@vue/compiler-dom" "3.5.12"
     "@vue/shared" "3.5.12"
 
-"@vue/devtools-api@^6.6.4":
+"@vue/devtools-api@^6.6.3", "@vue/devtools-api@^6.6.4":
   version "6.6.4"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.6.4.tgz#cbe97fe0162b365edc1dba80e173f90492535343"
   integrity sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==
@@ -948,6 +973,14 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
+pinia@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.3.0.tgz#b81f4ac7da1031af8d8f7007686c4b2799a55b9f"
+  integrity sha512-ohZj3jla0LL0OH5PlLTDMzqKiVw2XARmC1XYLdLWIPBMdhDW/123ZWr4zVAhtJm+aoSkFa13pYXskAvAscIkhQ==
+  dependencies:
+    "@vue/devtools-api" "^6.6.3"
+    vue-demi "^0.14.10"
+
 pirates@^4.0.1:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.6.tgz#3018ae32ecfcff6c29ba2267cbf21166ac1f36b9"
@@ -1006,10 +1039,10 @@ postcss@^8.4.23, postcss@^8.4.43, postcss@^8.4.47:
     picocolors "^1.1.0"
     source-map-js "^1.2.1"
 
-preline@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/preline/-/preline-2.5.1.tgz#d21f1a94af1bd0e5556742bb992b463ce0441881"
-  integrity sha512-fEXOsz0xLfTm5sJmNanourrMjwjcgGtaVNg8Pt6GzUbZ/oXHIdcR94LBdeE0Ea0pBPFOOHzEL5LQwSbAvCJEfw==
+preline@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/preline/-/preline-2.6.0.tgz#45dbd007f2a76519bbdaef276a39adbac30b435e"
+  integrity sha512-8O9ayfWgicM8w64k6HIXoRafVqI3xsyFhlT/OCR99USR5izlMGvCunAW+HsTtCwWI0V04m96eXcYy8ElYkDqNg==
   dependencies:
     "@popperjs/core" "^2.11.2"
 
@@ -1250,6 +1283,11 @@ vue-demi@^0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
   integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
+
+vue-demi@^0.14.10:
+  version "0.14.10"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.10.tgz#afc78de3d6f9e11bf78c55e8510ee12814522f04"
+  integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==
 
 vue-hooks-form@^0.3.1:
   version "0.3.1"

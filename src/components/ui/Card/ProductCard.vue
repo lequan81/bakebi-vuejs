@@ -1,150 +1,122 @@
-<script>
-import { ref } from "vue";
-import { StarReview } from "@components/ui/index.js";
+<script setup>
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useFavoriteProductsStore } from "@stores";
+import {
+  PriceFormatter,
+  CategoryFormatter,
+  StarReview,
+  Button,
+} from "@components";
 import { ShoppingCartIcon, HeartIcon } from "@heroicons/vue/24/outline";
 import { PRODUCTS_ID } from "@utils/constants";
 
-export default {
-  name: "ProductCard",
-  components: {
-    StarReview,
-    ShoppingCartIcon,
-    HeartIcon,
+const props = defineProps({
+  name: {
+    type: String,
+    default: "ProductCard",
   },
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    imgUrl: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: [String, Number],
-      required: true,
-    },
-    oldPrice: {
-      type: [String, Number],
-      default: 0,
-    },
-    category_id: {
-      type: [String, Number],
-      required: true,
-    },
-    product_id: {
-      type: [String, Number],
-      required: true,
-    },
+  productName: {
+    type: String,
+    required: true,
   },
-  setup() {
-    const isFavorite = ref(false);
+  rating: {
+    type: Number,
+    default: 3.5,
+  },
+  imgUrl: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: [String, Number],
+    required: true,
+  },
+  oldPrice: {
+    type: [String, Number],
+    default: 0,
+  },
+  category_id: {
+    type: [String, Number],
+    required: true,
+  },
+  product_id: {
+    type: [String, Number],
+    required: true,
+  },
+  priceClasses: {
+    type: String,
+    default: "",
+  },
+});
 
-    return {
-      isFavorite,
-    };
-  },
-  data() {
-    return {
-      PRODUCTS_ID,
-    };
-  },
+const router = useRouter();
+const favoriteStore = useFavoriteProductsStore();
+
+const isFavorite = computed(() => favoriteStore.isFavorite(props.product_id));
+
+const toggleFavorite = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  favoriteStore.toggleFavorite(props.product_id);
+};
+
+const navigateToProduct = () => {
+  router.push(
+    `/products/${PRODUCTS_ID[props.category_id].category}/${props.product_id}`
+  );
 };
 </script>
 
 <template>
-  <router-link
-    :to="`/products/${PRODUCTS_ID[category_id].category}/${product_id}`"
-    @click.prevent.stop=""
-    class="group relative w-full min-w-64 h-fit shadow-sm rounded-md border border-gray-200 hover:bg-gray-100 transition-colors duration-200"
+  <div
+    @click="navigateToProduct"
+    class="group relative flex-shrink-0 w-full max-w-64 md:max-w-[calc(25%-1.25rem)] md:min-w-64 h-fit shadow-md rounded-md border border-gray-200 bg-white outline outline-1 md:outline-2 outline-offset-2 outline-transparent hover:border-transparent hover:outline-blue-600 transition-all duration-300 ease-out"
   >
-    <div class="relative">
+    <div class="relative" @click.self="">
       <img
         :src="imgUrl"
-        :alt="name"
-        class="rounded-t-md object-cover aspect-square size-full brightness-90 hover:brightness-95 transition-brightness duration-200"
+        :alt="productName"
+        class="rounded-t-md object-cover aspect-square w-full h-44 sm:h-full sm:max-h-64 brightness-90 hover:brightness-95 transition-brightness duration-300 ease-in-out"
       />
-      <button
-        @click.prevent.stop=""
-        class="absolute top-2 right-2 p-2 rounded-md bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
+      <Button
+        btnClass="absolute top-2 right-2 p-1.5 md:p-2 rounded-md shadow-lg transition-colors duration-300 ease-in-out"
+        bgClass="bg-white hover:bg-gray-50"
+        :icon="ShoppingCartIcon"
+        iconClass="size-4 lg:size-5 xl:size-6 text-gray-700"
+        @click.stop="() => console.log('Add to cart')"
+      ></Button>
+    </div>
+    <div class="p-2 md:p-3 space-y-1 w-full">
+      <div class="flex flex-row w-full items-center justify-between">
+        <h3
+          class="font-semibold text-sm sm:text-base xl:text-lg truncate w-3/4 sm:w-full"
+        >
+          {{ productName }}
+        </h3>
+        <Button
+          btnClass="p-1.5 border-none size-6 sm:size-8"
+          bgClass="bg-transparent"
+          :icon="HeartIcon"
+          :iconClass="`shrink-0 size-5 sm:size-6 ml-auto cursor-pointer ${
+            isFavorite
+              ? 'fill-red-500 text-red-500 hover:fill-none sm:hover:fill-red-500'
+              : 'text-red-400 hover:fill-red-500'
+          }`"
+          @click="toggleFavorite"
+        ></Button>
+      </div>
+      <div
+        class="flex flex-row w-full items-center justify-between flex-wrap sm:flex-nowrap gap-y-2 sm:gap-y-0"
       >
-        <ShoppingCartIcon
-          class="size-5 sm:size-6 text-gray-700"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </button>
+        <StarReview :rating="rating" />
+        <CategoryFormatter :category_id="category_id" />
+      </div>
+      <PriceFormatter
+        :price="price"
+        :oldPrice="oldPrice"
+        :wrapperClasses="priceClasses"
+      />
     </div>
-    <div class="p-3 space-y-1.5 w-full">
-      <div class="flex flex-row w-full items-center justify-between">
-        <h3 class="font-semibold text-base sm:text-lg truncate">{{ name }}</h3>
-        <button
-          class="block py-1"
-          @click.prevent="
-            () => {
-              isFavorite = !isFavorite;
-            }
-          "
-        >
-          <HeartIcon
-            :class="`shrink-0 size-5 sm:size-6 cursor-pointer ${
-              isFavorite
-                ? 'fill-red-500 text-red-500'
-                : ' text-red-400 hover:fill-red-500'
-            }`"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </button>
-      </div>
-      <div class="mt-2 flex flex-row items-baseline gap-x-4">
-        <span class="font-bold text-base sm:text-lg">
-          {{
-            new Intl.NumberFormat("vi-VN", {
-              style: "currency",
-              currency: "VND",
-            }).format(Number(price))
-          }}
-        </span>
-        <span
-          v-if="Number(oldPrice) > 0"
-          class="font-semibold text-sm text-gray-500 line-through"
-        >
-          {{
-            new Intl.NumberFormat("vi-VN", {
-              style: "currency",
-              currency: "VND",
-            }).format(Number(oldPrice))
-          }}
-        </span>
-        <span
-          v-if="Number(oldPrice) > 0"
-          :class="`rounded py-0.5 px-1.5 text-xs sm:text-sm font-semibold ml-auto ${
-            oldPrice > price
-              ? 'bg-red-100 text-red-700'
-              : 'bg-green-100 text-red-700'
-          }`"
-        >
-          {{ Math.round(((price - oldPrice) / oldPrice) * 100) }}%
-        </span>
-      </div>
-      <div class="flex flex-row w-full items-center justify-between">
-        <StarReview />
-        <span
-          v-if="category_id !== undefined"
-          :class="`rounded py-0.5 px-1.5 text-sm font-semibold ml-auto ${
-            category_id === 0
-              ? 'bg-red-100 text-red-600'
-              : 'bg-orange-100 text-orange-600'
-          }`"
-        >
-          {{ PRODUCTS_ID[category_id].name }}
-        </span>
-      </div>
-    </div>
-  </router-link>
+  </div>
 </template>

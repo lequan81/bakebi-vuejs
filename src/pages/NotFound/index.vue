@@ -1,11 +1,13 @@
-<script>
+<script setup>
+import { Button } from "@components";
 import { ArrowUturnLeftIcon } from "@heroicons/vue/24/outline";
-export default {
-  name: "NotFound",
-  components: {
-    ArrowUturnLeftIcon,
+
+defineProps({
+  name: {
+    type: String,
+    default: "NotFound",
   },
-};
+});
 </script>
 
 <template>
@@ -26,21 +28,14 @@ export default {
       <p class="text-gray-800 text-center">
         Có vẻ như trang bạn đang tìm kiếm không tồn tại hoặc đã bị xóa.
       </p>
-      <button
-        class="w-fit py-2 px-4 bg-black text-white font-semibold rounded-lg transition duration-200 flex items-center justify-center gap-x-2"
-        type="button"
+      <Button
+        type="primary"
+        title="Trở về trang chủ"
         @click="$router.go(-1)"
-      >
-        <ArrowUturnLeftIcon
-          class="shrink-0 size-3.5 md:size-5"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-
-        Quay lại trang trước
-      </button>
+        :icon="ArrowUturnLeftIcon"
+        iconClass="shrink-0 size-3.5 md:size-5"
+        btnClass="w-fit py-2 px-4 shadow-sm rounded-lg"
+      />
     </div>
   </div>
 </template>

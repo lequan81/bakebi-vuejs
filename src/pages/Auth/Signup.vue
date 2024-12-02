@@ -1,29 +1,20 @@
-<script>
+<script setup>
 import { ref } from "vue";
-import { Input, Checkbox } from "@components/index.js";
-export default {
-  name: "Signup",
-  components: {
-    Input,
-    Checkbox,
-  },
-  setup() {
-    const fullname = ref("");
-    const email = ref("");
-    const address = ref("");
-    const phonenumber = ref("");
-    const password = ref("");
-    const comfirm_password = ref("");
+import { Input, Checkbox } from "@components";
 
-    return {
-      fullname,
-      email,
-      address,
-      phonenumber,
-      password,
-    };
+defineProps({
+  name: {
+    type: String,
+    default: "Signup",
   },
-};
+});
+
+const fullname = ref("");
+const email = ref("");
+const address = ref("");
+const phonenumber = ref("");
+const password = ref("");
+const comfirm_password = ref("");
 </script>
 <template>
   <div
@@ -40,7 +31,7 @@ export default {
           <span>Bạn đã có tài khoản? </span>
           <router-link
             :to="{ name: 'Login' }"
-            class="font-semibold transition duration-200 hover:underline underline-offset-2 hover:text-black"
+            class="font-semibold transition-colors duration-300 ease-in-out hover:underline underline-offset-2 hover:text-black"
           >
             Đăng nhập ngay!
           </router-link>
@@ -61,11 +52,11 @@ export default {
           wrapperClass="col-span-full h-fit sm:col-span-5"
         />
         <Input
-          v-model="phonenumber"
-          name="phonenumber"
-          label="Số điện thoại"
-          type="text"
-          placeholder="0987654321"
+          v-model="email"
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="test@email.com"
           :isRequired="true"
           wrapperClass="col-span-full h-fit sm:col-span-3"
         />
@@ -79,11 +70,11 @@ export default {
           wrapperClass="col-span-full h-fit sm:col-span-5"
         />
         <Input
-          v-model="email"
-          name="email"
-          type="email"
-          label="Email"
-          placeholder="test@email.com"
+          v-model="phonenumber"
+          name="phonenumber"
+          label="Số điện thoại"
+          type="text"
+          placeholder="0987654321"
           :isRequired="true"
           wrapperClass="col-span-full h-fit sm:col-span-3"
         />
@@ -103,19 +94,19 @@ export default {
           :isRequired="true"
           wrapperClass="col-span-full h-fit sm:col-span-4"
         />
-        <Checkbox name="accept_statement" wrapperClass="col-span-full">
+        <Checkbox wrapperClass="col-span-full">
           <span>
             Tôi đồng ý với
             <router-link
               :to="{ name: 'Statements' }"
-              class="font-semibold transition duration-200 hover:underline underline-offset-2 hover:text-black"
+              class="font-semibold transition-colors duration-300 ease-in-out hover:underline underline-offset-2 hover:text-black"
             >
               Các điều khoản
             </router-link>
             và
             <router-link
               :to="{ name: 'PrivacyPolicy' }"
-              class="font-semibold transition duration-200 hover:underline underline-offset-2 hover:text-black"
+              class="font-semibold transition-colors duration-300 ease-in-out hover:underline underline-offset-2 hover:text-black"
             >
               Chính sách bảo mật
             </router-link>
@@ -123,7 +114,7 @@ export default {
         </Checkbox>
         <button
           type="submit"
-          class="col-span-full w-full text-sm sm:text-base py-2 px-4 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition duration-200 flex items-center justify-center gap-x-2"
+          class="col-span-full w-full text-sm sm:text-base shadow-sm py-2 px-4 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors duration-300 ease-in-out flex items-center justify-center gap-x-2"
         >
           Đăng ký
         </button>

@@ -1,13 +1,14 @@
-<script>
-export default {
-  name: "Logo",
-  props: {
-    customClass: {
-      type: String,
-      default: "",
-    },
+<script setup>
+defineProps({
+  name: {
+    type: String,
+    default: "Logo",
   },
-};
+  customClass: {
+    type: String,
+    default: "",
+  },
+});
 </script>
 
 <template>

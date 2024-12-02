@@ -1,22 +1,18 @@
 <script setup>
-import { Header, Footer } from "@components/index.js";
 import { onMounted } from "vue";
+// import { HSStaticMethods } from "preline";
+import { Header, Footer } from "@components";
 
-onMounted(() => {
-  setTimeout(() => {
-    window.HSStaticMethods.autoInit();
-  }, 100);
-});
-</script>
-
-<script>
-export default {
-  name: "DefaultLayout",
-  components: {
-    Header,
-    Footer,
+defineProps({
+  name: {
+    type: String,
+    default: "DefaultLayout",
   },
-};
+});
+
+// onMounted(() => {
+//   HSStaticMethods.autoInit();
+// });
 </script>
 
 <template>
@@ -24,16 +20,14 @@ export default {
     id="app"
     class="min-h-screen w-full flex flex-col bg-orange-50 select-none"
   >
-    <Header></Header>
+    <Header />
 
-    <div class="relative min-h-screen flex flex-col">
-      <div
-        class="flex flex-col size-full overflow-hidden flex-grow flex-1 mt-12 lg:mt-14 xl:mt-16"
-      >
+    <div class="relative">
+      <div class="flex flex-col size-full grow mt-12 lg:mt-14">
         <router-view />
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   </div>
 </template>

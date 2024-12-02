@@ -1,16 +1,21 @@
-<script>
+<script setup>
+import { Button } from "@components";
 import { EnvelopeIcon } from "@heroicons/vue/24/outline";
-export default {
-  name: "Subcribe",
-  components: { EnvelopeIcon },
-};
+
+defineProps({
+  name: {
+    type: String,
+    default: "Subcribe",
+  },
+});
 </script>
+
 <template>
   <div
-    class="absolute left-1/2 -translate-x-1/2 -mt-24 sm:-mt-14 max-w-screen-2xl:-mt-20 w-full px-4 lg:max-w-3xl max-w-screen-2xl:max-w-4xl"
+    class="absolute left-1/2 -translate-x-1/2 md:-translate-y-3/4 -translate-y-1/2 md:-mt-12 w-full px-4 lg:max-w-3xl max-w-screen-2xl:max-w-4xl"
   >
     <div
-      class="bg-gray-900 p-4 lg:px-8 lg:py-4 max-w-screen-2xl:px-10 max-w-screen-2xl:py-6 rounded-lg flex items-center flex-col sm:flex-row gap-y-6 sm:gap-y-0 sm:gap-x-8 w-full"
+      class="bg-gray-900 p-4 lg:px-8 lg:py-4 max-w-screen-2xl:px-10 max-w-screen-2xl:py-6 rounded-lg flex items-center flex-col sm:flex-row gap-y-6 sm:gap-y-0 sm:gap-x-8 w-full shadow-lg"
     >
       <p
         class="w-full sm:w-7/12 text-white text-xl md:text-2xl tracking-wide font-bold font-serif"
@@ -32,16 +37,15 @@ export default {
           </div>
           <input
             type="text"
-            class="py-2 px-10 block w-full bg-white border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none placeholder:text-gray-500"
+            class="py-2 px-10 block w-full bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none placeholder:text-gray-500"
             placeholder="johndoe@testemail.com"
           />
         </div>
-        <button
-          type="submit"
-          class="py-2 px-4 w-full bg-white text-black rounded text-base font-bold focus:outline-none focus:ring-1 focus:ring-green-500 disabled:opacity-50 disabled:pointer-events-none"
-        >
-          Đăng ký nhận email
-        </button>
+        <Button type="secondary" :isSubmit="true">
+          <span class="w-full text-black font-bold text-base">
+            Đăng ký nhận email
+          </span>
+        </Button>
       </form>
     </div>
   </div>

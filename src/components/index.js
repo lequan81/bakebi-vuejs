@@ -1,3 +1,33 @@
-export { Header, Footer } from "./layouts/index.js";
-export { Input, Checkbox, ProductCard, StarReview } from "./ui/index.js";
-export { default as Logo } from "./utils/Logo/index.vue";
+export {
+  Logo,
+  PriceFormatter,
+  CategoryFormatter,
+  DateFormatter,
+} from "./utils/index.js";
+export {
+  Header,
+  Footer,
+  ProductsList,
+  ProductsSlide,
+  ReviewSlide,
+  HeroCarousel,
+  ProductsCarousel,
+  Pagination,
+  Breadcrumb,
+  ProductsFilter,
+  OffcanvasFilter,
+
+} from "./layouts/index.js";
+export {
+  Input,
+  Checkbox,
+  ProductCard,
+  CustomizeProductCard,
+  ReviewCard,
+  StarReview,
+  Tabs,
+  Button,
+  DropdownBtn,
+  SelectBtn,
+  Offcanvas,
+} from "./ui/index.js";

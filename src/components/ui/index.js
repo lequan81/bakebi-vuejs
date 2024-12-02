@@ -1,3 +1,11 @@
-export { default as StarReview } from "./StarReview/index.vue";
-export { Checkbox, Input } from "./Input/index.js";
-export { ProductCard } from "./Card/index.js";
+export { default as ReviewCard } from "./Card/ReviewCard.vue";
+export { default as ProductCard } from "./Card/ProductCard.vue";
+export { default as CustomizeProductCard } from "./Card/CustomizeProductCard.vue";
+export { default as Input } from "./Input/index.vue";
+export { default as Checkbox } from "./Input/Checkbox.vue";
+export { default as StarReview } from "./Review/StarReview.vue";
+export { default as Tabs } from "./Tabs/index.vue";
+export { default as Button } from "./Button/index.vue";
+export { default as DropdownBtn } from "./Button/Dropdown.vue";
+export { default as SelectBtn } from "./Button/Select.vue";
+export { default as Offcanvas } from "./Overlay/Offcanvas.vue";

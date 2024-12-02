@@ -1,21 +1,30 @@
 <script setup>
-import { ref, provide } from "vue";
-import { Logo } from "@components";
+import { ref, provide, onMounted } from "vue";
+import { HSCollapse, HSDropdown, HSComboBox } from "preline";
 import Navbar from "./Navbar/index.vue";
 import BtnGroup from "./BtnGroup.vue";
 import SearchboxModal from "./Searchbox/SearchboxModal.vue";
+import { Logo } from "@components";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import HSOverlay from "@preline/overlay";
 
-const isLogin = ref(false);
+const isLogin = ref(true);
 provide("isLogin", isLogin);
+
+onMounted(() => {
+  HSCollapse.autoInit();
+  HSDropdown.autoInit();
+  HSComboBox.autoInit();
+  HSOverlay.autoInit();
+});
 </script>
 
 <template>
   <header
-    class="flex flex-wrap md:justify-start md:flex-nowrap z-20 fixed top-0 start-0 w-full bg-white"
+    class="flex flex-wrap md:justify-start md:flex-nowrap z-20 fixed top-0 start-0 w-full bg-white shadow-sm border-b border-gray-200"
   >
     <nav
-      class="relative w-full mx-auto md:flex md:items-center md:justify-between gap-x-10 py-2 px-2 lg:px-6 xl:px-10"
+      class="relative w-full mx-auto md:flex md:items-center md:justify-between md:gap-x-10 py-2 px-2 lg:px-6 xl:px-10"
     >
       <div class="flex justify-start gap-x-1.5 sm:gap-x-0 items-center">
         <!-- Collapse Button -->

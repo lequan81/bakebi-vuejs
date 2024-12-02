@@ -1,6 +1,5 @@
-<script>
+<script setup>
 import { inject } from "vue";
-import { useRouter } from "vue-router";
 import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
@@ -8,27 +7,19 @@ import {
   UserCircleIcon,
   ChevronDownIcon,
 } from "@heroicons/vue/24/outline";
-export default {
-  name: "BtnGroup",
-  components: {
-    MagnifyingGlassIcon,
-    ShoppingCartIcon,
-    ArrowRightEndOnRectangleIcon,
-    UserCircleIcon,
-    ChevronDownIcon,
+
+defineProps({
+  name: {
+    type: String,
+    default: "BtnGroup",
   },
-  props: {
-    isMini: {
-      type: Boolean,
-      required: true,
-    },
+  isMini: {
+    type: Boolean,
+    required: true,
   },
-  setup() {
-    const isLogin = inject("isLogin");
-    const router = useRouter();
-    return { isLogin };
-  },
-};
+});
+
+const isLogin = inject("isLogin");
 </script>
 
 <template>
@@ -41,7 +32,7 @@ export default {
     <!-- Search Button -->
     <button
       type="button"
-      class="py-2 px-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex sm:hidden items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none"
+      class="p-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex sm:hidden items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none transition-colors duration-200 ease-in-out"
       aria-haspopup="dialog"
       aria-expanded="false"
       aria-controls="searchbox-modal"
@@ -61,7 +52,7 @@ export default {
       <button
         id="hs-dropdown-account"
         type="button"
-        class="py-2 px-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+        class="p-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none transition-colors duration-200 ease-in-out"
       >
         <ShoppingCartIcon
           class="shrink-0 size-4 md:size-5"
@@ -82,7 +73,7 @@ export default {
         <button
           id="hs-dropdown-account"
           type="button"
-          class="py-2 px-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none"
+          class="p-2 md:px-4 hover:bg-gray-50 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-gray-900 focus:outline-none transition-colors duration-200 ease-in-out"
           aria-haspopup="menu"
           aria-expanded="false"
           aria-label="Dropdown"
@@ -96,7 +87,7 @@ export default {
           />
           <span class="hidden md:block">Tài khoản</span>
           <ChevronDownIcon
-            class="hs-dropdown-open:rotate-180 hidden md:block size-4 text-gray-600 dark:text-neutral-600"
+            class="hs-dropdown-open:rotate-180 hidden md:block size-4 text-gray-600"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
@@ -107,22 +98,18 @@ export default {
 
       <!-- Profile Dropdown-->
       <div
-        class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+        class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="hs-dropdown-account"
       >
-        <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700">
-          <p class="text-sm text-gray-500 dark:text-neutral-500">
-            Đăng nhập với
-          </p>
-          <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">
-            james@site.com
-          </p>
+        <div class="py-3 px-5 bg-gray-100 rounded-t-lg">
+          <p class="text-sm text-gray-500">Đăng nhập với</p>
+          <p class="text-sm font-medium text-gray-800">james@site.com</p>
         </div>
         <div class="p-1.5 space-y-0.5">
           <a
-            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             href="#"
           >
             <svg
@@ -143,7 +130,7 @@ export default {
             Newsletter
           </a>
           <a
-            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             href="#"
           >
             <svg
@@ -165,7 +152,7 @@ export default {
             Purchases
           </a>
           <a
-            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             href="#"
           >
             <svg
@@ -189,7 +176,7 @@ export default {
             Downloads
           </a>
           <a
-            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
+            class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             href="#"
           >
             <svg
@@ -218,7 +205,7 @@ export default {
     <router-link :to="{ name: 'Login' }" v-else>
       <button
         type="button"
-        class="py-2 px-2 md:px-4 bg-gray-900 hover:bg-gray-800 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-white focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+        class="p-2 md:px-4 bg-gray-900 hover:bg-gray-800 rounded-md inline-flex items-center justify-center gap-x-2 text-sm font-medium text-white border-inherit focus:outline-none disabled:opacity-50 disabled:pointer-events-none transition-colors duration-200 ease-in-out"
       >
         <ArrowRightEndOnRectangleIcon
           class="shrink-0 size-4 md:size-5"

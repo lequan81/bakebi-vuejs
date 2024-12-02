@@ -1,24 +1,15 @@
-<script>
+<script setup>
 import Searchbox from "../Searchbox/index.vue";
 import BtnGroup from "../BtnGroup.vue";
 import NavbarItem from "./NavbarItem.vue";
 import { DEFAULT_NAVIGATION } from "@utils/constants";
-import { HomeIcon } from "@heroicons/vue/24/outline";
 
-export default {
-  name: "Navbar",
-  components: {
-    Searchbox,
-    BtnGroup,
-    NavbarItem,
-    HomeIcon,
+defineProps({
+  name: {
+    type: String,
+    default: "Navbar",
   },
-  data() {
-    return {
-      DEFAULT_NAVIGATION,
-    };
-  },
-};
+});
 </script>
 <template>
   <div
@@ -33,18 +24,16 @@ export default {
         <div
           class="flex flex-col size-full md:flex-row md:items-center justify-start px-2 sm:px-1 gap-y-3 md:gap-y-0 md:gap-x-2"
         >
-          <template v-for="(item, index) in DEFAULT_NAVIGATION" :key="index">
-            <NavbarItem
-              :title="item.title"
-              :href="item.href"
-              :isDropdown="item.isDropdown"
-              :dropdownItems="item.dropdownItems"
-              :isSubmenu="item.isSubmenu"
-              :submenuTitle="item.submenuTitle"
-              :submenuItems="item.submenuItems"
-              :icon="item.icon"
-            />
-          </template>
+          <NavbarItem
+            v-for="(item, index) in DEFAULT_NAVIGATION"
+            :key="index"
+            :title="item.title"
+            :submenuTitle="item.submenuTitle"
+            :dropdownItems="item.dropdownItems"
+            :submenuItems="item.submenuItems"
+            :href="item.href"
+            :icon="item.icon"
+          />
         </div>
       </div>
     </div>

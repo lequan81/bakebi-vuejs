@@ -1,24 +1,17 @@
-<script>
+<script setup>
 import { ref } from "vue";
+import { Input, Checkbox } from "@components";
 import { UserIcon } from "@heroicons/vue/24/outline";
-import { Input, Checkbox } from "@components/index.js";
-export default {
-  name: "Login",
-  components: {
-    UserIcon,
-    Input,
-    Checkbox,
-  },
-  setup() {
-    const email = ref("");
-    const password = ref("");
 
-    return {
-      email,
-      password,
-    };
+defineProps({
+  name: {
+    type: String,
+    default: "Login",
   },
-};
+});
+
+const email = ref("");
+const password = ref("");
 </script>
 <template>
   <div
@@ -35,7 +28,7 @@ export default {
           <span>Bạn chưa có tài khoản? </span>
           <router-link :to="{ name: 'Signup' }">
             <span
-              class="font-semibold transition duration-200 hover:underline underline-offset-2 hover:text-black"
+              class="font-semibold transition-colors duration-300 ease-in-out hover:underline underline-offset-2 hover:text-black"
             >
               Đăng ký ngay!
             </span>
@@ -69,15 +62,11 @@ export default {
             Quên mật khẩu?
           </router-link>
         </Input>
-        <Checkbox
-          name="remember_me"
-          title="Ghi nhớ đăng nhập"
-          wrapperClass="col-span-full"
-        />
+        <Checkbox title="Ghi nhớ đăng nhập" wrapperClass="col-span-full" />
 
         <button
           type="submit"
-          class="col-span-full w-full text-sm sm:text-base py-2 px-4 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition duration-200 flex items-center justify-center gap-x-2"
+          class="col-span-full w-full text-sm sm:text-base shadow-sm py-2 px-4 bg-black hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors duration-300 ease-in-out flex items-center justify-center gap-x-2"
         >
           <UserIcon
             class="shrink-0 size-4 sm:size-5"

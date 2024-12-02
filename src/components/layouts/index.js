@@ -1,2 +1,11 @@
 export { default as Header } from "./Header/index.vue";
 export { default as Footer } from "./Footer/index.vue";
+export { default as Pagination } from "./Pagination/index.vue";
+export { default as Breadcrumb } from "./Breadcrumb/index.vue";
+export { default as ProductsList } from "./GridList/ProductsList.vue";
+export { default as ProductsSlide } from "./Slide/ProductsSlide.vue";
+export { default as ReviewSlide } from "./Slide/ReviewSlide.vue";
+export { default as HeroCarousel } from "./Carousel/HeroCarousel.vue";
+export { default as ProductsCarousel } from "./Carousel/ProductsCarousel.vue";
+export { default as ProductsFilter } from "./Filter/ProductsFilter.vue";
+export { default as OffcanvasFilter } from "./Filter/OffcanvasFilter.vue";

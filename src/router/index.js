@@ -1,20 +1,7 @@
+import { HSStaticMethods } from "preline";
 import { createRouter, createWebHistory } from "vue-router";
 import { DefaultLayout, BlankLayout } from "@layouts/index.js";
-import {
-  Home,
-  Recently,
-  Products,
-  ProductDetails,
-  Login,
-  Signup,
-  ResetPassword,
-  ForgotPassword,
-  Profile,
-  Cart,
-  NotFound,
-  PrivacyPolicy,
-  TermsAndConditions,
-} from "@pages/index.js";
+import { Home } from "@pages/index.js";
 
 const routes = [
   {
@@ -26,21 +13,17 @@ const routes = [
     },
   },
   {
-    path: "/recently",
-    name: "Recently",
-    component: Recently,
-    meta: {
-      layout: DefaultLayout,
-    },
-  },
-  {
     path: "/products/:category",
     children: [
       {
         path: "", // empty path for the parent route
         name: "Products",
-        component: Products,
-        props: true,
+        component: () =>
+          import("@pages/index.js").then((pages) => pages.Products),
+        props: (route) => ({
+          category: route.params.category,
+          page: parseInt(route.query.page) || 1,
+        }),
         meta: {
           layout: DefaultLayout,
         },
@@ -48,7 +31,8 @@ const routes = [
       {
         path: ":product_id",
         name: "ProductDetail",
-        component: ProductDetails,
+        component: () =>
+          import("@pages/index.js").then((pages) => pages.ProductDetails),
         props: true,
         meta: {
           layout: DefaultLayout,
@@ -56,11 +40,34 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/recently",
+    name: "Recently",
+    component: () => import("@pages/index.js").then((pages) => pages.Recently),
+    props: (route) => ({
+      page: parseInt(route.query.page) || 1,
+    }),
+    meta: {
+      layout: DefaultLayout,
+    },
+  },
+  {
+    path: "/trending",
+    name: "Trending",
+    component: () => import("@pages/index.js").then((pages) => pages.Trending),
+    props: (route) => ({
+      page: parseInt(route.query.page) || 1,
+    }),
+    meta: {
+      layout: DefaultLayout,
+    },
+  },
+
   // Authenticated routes
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: () => import("@pages/index.js").then((pages) => pages.Login),
     meta: {
       layout: DefaultLayout,
     },
@@ -68,7 +75,7 @@ const routes = [
   {
     path: "/signup",
     name: "Signup",
-    component: Signup,
+    component: () => import("@pages/index.js").then((pages) => pages.Signup),
     meta: {
       layout: DefaultLayout,
     },
@@ -76,7 +83,8 @@ const routes = [
   {
     path: "/reset-password",
     name: "ResetPassword",
-    component: ResetPassword,
+    component: () =>
+      import("@pages/index.js").then((pages) => pages.ResetPassword),
     meta: {
       layout: DefaultLayout,
     },
@@ -84,7 +92,8 @@ const routes = [
   {
     path: "/forgot-password",
     name: "ForgotPassword",
-    component: ForgotPassword,
+    component: () =>
+      import("@pages/index.js").then((pages) => pages.ForgotPassword),
     meta: {
       layout: DefaultLayout,
     },
@@ -92,7 +101,7 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    component: Profile,
+    component: () => import("@pages/index.js").then((pages) => pages.Profile),
     meta: {
       layout: DefaultLayout,
     },
@@ -100,7 +109,7 @@ const routes = [
   {
     path: "/cart",
     name: "Cart",
-    component: Cart,
+    component: () => import("@pages/index.js").then((pages) => pages.Cart),
     meta: {
       layout: DefaultLayout,
     },
@@ -109,7 +118,8 @@ const routes = [
   {
     path: "/privacy-policy",
     name: "PrivacyPolicy",
-    component: PrivacyPolicy,
+    component: () =>
+      import("@pages/index.js").then((pages) => pages.PrivacyPolicy),
     meta: {
       layout: DefaultLayout,
     },
@@ -117,7 +127,8 @@ const routes = [
   {
     path: "/statements",
     name: "Statements",
-    component: TermsAndConditions,
+    component: () =>
+      import("@pages/index.js").then((pages) => pages.TermsAndConditions),
     meta: {
       layout: DefaultLayout,
     },
@@ -126,7 +137,7 @@ const routes = [
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: NotFound,
+    component: () => import("@pages/index.js").then((pages) => pages.NotFound),
     meta: {
       layout: BlankLayout,
     },
@@ -159,7 +170,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from, failure) => {
   if (!failure) {
     setTimeout(() => {
-      window.HSStaticMethods.autoInit();
+      HSStaticMethods.autoInit();
     }, 100);
   }
 });

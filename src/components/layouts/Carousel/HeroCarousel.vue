@@ -1,24 +1,16 @@
-<script>
-import { HSCarousel } from "preline";
-export default {
-  name: "Slider",
-  props: {
-    slides: {
-      type: Array,
-      required: true,
-      default: () => [],
-    },
+<script setup>
+defineProps({
+  slides: {
+    type: Array,
+    required: true,
+    default: undefined,
   },
-  setup() {
-    setTimeout(() => {
-      HSCarousel.autoInit();
-    }, 100);
-  },
-};
+});
 </script>
 
 <template>
   <div
+    v-if="slides !== undefined"
     data-hs-carousel='{
     "loadingClasses": "opacity-0",
     "isAutoPlay": true
@@ -29,19 +21,16 @@ export default {
       <div
         class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0"
       >
-        <template v-for="(slide, index) in slides" :key="index">
-          <div class="hs-carousel-slide">
-            <div
-              class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900 bg-center object-contain object-center bg-no-repeat bg-cover"
-              :style="`background-image: url(${slide.url})`"
-            >
-              <!-- <span
-                class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white"
-                >First slide</span
-              > -->
-            </div>
-          </div>
-        </template>
+        <div
+          class="hs-carousel-slide"
+          v-for="(slide, index) in slides"
+          :key="index"
+        >
+          <div
+            class="flex justify-center h-full bg-gray-100 p-6 bg-center object-contain object-center bg-no-repeat bg-cover"
+            :style="`background-image: url(${slide.url})`"
+          ></div>
+        </div>
       </div>
     </div>
 
